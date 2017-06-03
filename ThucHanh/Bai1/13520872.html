@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>13520872</title>
+	<link rel="stylesheet" type="text/css" href="13520872.css">
+	<link rel="stylesheet" type="text/css" href="bootstrap.min.css">
+	<script src="jquery.min.js"></script>
+	<script src="bootstrap.min.js"></script>
+	<script src="13520872.js"></script>
+</head>
+<body>
+	<div id="title">
+		<p class="center">.:ĐĂNG KÝ HỌC PHẦN:.</p>
+		<hr>
+	</div>
+	<div id="content">
+		<form>
+			<div class="content-item">
+				<label class="col-md-6">Mã số: </label>
+				<input type="text" name="MaSo" id="MaSo" data-toggle="tooltip" data-placement="right" 
+				data-original-title="Mã số" class="col-md-6 input">
+			</div>
+			<div class="content-item">
+				<label class="col-md-6">Họ và tên: </label>
+				<input type="text" name="HoVaTen" id="HoVaTen" data-toggle="tooltip" data-placement="right" data-original-title="Họ và tên" class="col-md-6 input">
+			</div>
+			<div class="content-item">
+				<label class="col-md-6">Địa chỉ: </label>
+				<input type="text" name="DiaChi" id="DiaChi" data-toggle="tooltip" data-placement="right" data-original-title="Địa chỉ" class="col-md-6 input">
+			</div>
+			<div class="content-item">
+				<label class="col-md-6">Điện thoại: </label>
+				<input type="text" onkeyup="this.value=this.value.replace(/[^\+\d]+/,'')" maxlength="13" name="DienThoai" id="DienThoai" data-toggle="tooltip" data-placement="right" data-original-title="Điện thoại" class="col-md-6 mobile">
+			</div>
+			<div class="content-item">
+				<label class="col-md-6">Giới tính: </label>
+				<div id="GioiTinh" title="Giới tính" class="check-box col-md-6">
+					<input type="checkbox" name="GioiTinh" value="Nam"> Nam
+					<input type="checkbox" name="GioiTinh" value="Nữ"> Nữ
+				</div>
+			</div>
+			<div class="content-item">
+				<label class="col-md-6">Ngày sinh: </label>
+				<div id="DateTime" class="col-md-7">
+					<select name="ThangSinh" id="ThangSinh" onchange="MaxDay(); CheckYear()" class="col-md-2">
+						<option value="1">Tháng 1</option>
+						<option value="2">Tháng 2</option>
+						<option value="3">Tháng 3</option>
+						<option value="4">Tháng 4</option>
+						<option value="5">Tháng 5</option>
+						<option value="6">Tháng 6</option>
+						<option value="7">Tháng 7</option>
+						<option value="8">Tháng 8</option>
+						<option value="9">Tháng 9</option>
+						<option value="10">Tháng 10</option>
+						<option value="11">Tháng 11</option>
+						<option value="12">Tháng 12</option>
+					</select>
+					<p id="comma" class="col-md-1">,</p>
+					<input type="number" onkeyup="this.value=this.value.replace(/[^\d]+/,''); CheckYear()" onchange="CheckYear()" min="1" max="31" id="NgaySinh" name="NgaySinh" data-toggle="tooltip" data-placement="top" data-original-title="Ngày sinh" class="col-md-2">
+					<p id="comma" class="col-md-1">,</p>
+					<input type="number" onkeyup="this.value=this.value.replace(/[^\d]+/,''); CheckYear()" onchange="CheckYear()" min="1000" id="NamSinh" name="NamSinh" data-toggle="tooltip" data-placement="top" data-original-title="Năm sinh" class="col-md-2">
+					<p id="DateTimeDetail" class="col-md-3">(Month, DD, YYYY)</p>
+				</div>
+			</div>
+			<div class="content-item">
+				<label class="col-md-6">Email: </label>
+				<input type="email" name="Email" id="Email" onkeyup="CheckEmail(this.value)" data-toggle="tooltip" data-placement="bottom" data-original-title="Email" class="col-md-6 email">
+				<p id="EmailDetail" class="col-md-3">(gmail.com/gm.uit.edu.vn)</p>
+			</div>
+			<div class="content-item group-panel">
+				<label class="col-title col-md-6">Các môn học: </label>
+				<label class="col-title col-md-6">Các môn học đã chọn: </label>
+				<div class="panel col-md-5">
+					<ul id="CacMonHoc">
+						<li> LT Hướng Đối Tượng </li>
+						<li> Cấu Trúc Dữ Liệu </li>
+						<li> LT C Trên Windows </li>
+						<li> NM CNPM </li>
+						<li> Trí Tuệ Nhân Tạo </li>
+						<li> CSDL Và Web </li>
+						<li> CĐ Java </li>
+						<li> Cơ Sở Dữ Liệu </li>
+						<li> Hợp Ngữ </li>
+					</ul>
+				</div>
+				<div id="button-move" class="center col-md-2">
+					<input type='button' id="move-one-right" class="col-md-12" value=">">
+					<input type='button' id="move-all-right" class="col-md-12" value=">>">
+					<input type='button' id="move-one-left" class="col-md-12" value="<">
+					<input type='button' id="move-all-left" class="col-md-12" value="<<">
+					<input type='button' id="ok" class="col-md-12" value="OK">
+				</div>
+				<div class="panel col-md-5">
+					<ul id="CacMonHocDaChon">
+					</ul>
+				</div>
+			</div>
+			<div id="control" class="center">
+				<input type="button" name="DangKy" id="DangKy" value="Đăng ký">
+				<input type="button" name="Xoa" id="Xoa" value="Xóa">
+			</div>
+		</form>
+		<div id="table">
+			<table>
+				<tr>
+					<th>MSSV</th>
+					<th>Họ Tên</th>
+					<th>Giới Tính</th>
+					<th>Ngày Sinh</th>
+				</tr>
+				<tr>
+					<td>14520238</td>
+					<td>Nguyễn Thị Lan</td>
+					<td>Nữ</td>
+					<td>19/05/1996</td>
+				</tr>
+				<tr>
+					<td>14520230</td>
+					<td>Trần Hiếu</td>
+					<td>Nam</td>
+					<td>28/02/1995</td>
+				</tr>
+				<tr>
+					<td>14521330</td>
+					<td>Huỳnh Văn Linh</td>
+					<td>Nam</td>
+					<td>18/03/1995</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+</body>
+</html>
+​
